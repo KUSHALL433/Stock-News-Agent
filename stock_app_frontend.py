@@ -1,6 +1,6 @@
 import streamlit as st
 import asyncio
-from stock_app_final import app
+from app import app
 
 st.set_page_config(
     page_title="Stock News Summary | Moneycontrol",
@@ -35,3 +35,4 @@ async def run_summary():
 
 if st.button("Run Summary"):
     asyncio.run(run_summary())
+
