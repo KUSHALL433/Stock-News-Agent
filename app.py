@@ -89,6 +89,7 @@ def ai_summary(state:AgentState):
     result = llm.invoke([HumanMessage(content=prompt)])
     state["ai_summary"] = result.content
     return state
+
 graph = StateGraph(AgentState)
 
 graph.add_node("business_scraper",business_scraper)
@@ -119,14 +120,3 @@ graph.add_edge("ai_summary",END)
 
 app=graph.compile()
 
-
-output=app.invoke({'business_articles':[],
-    'economy_articles':[],
-    'company_articles':[],
-    'ipo_articles':[],
-    'startup_articles':[],
-    'stocks_articles':[],
-    'ai_summary':''})
-
-
-print(output['ai_summary'])
