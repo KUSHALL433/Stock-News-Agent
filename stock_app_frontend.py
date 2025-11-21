@@ -1,5 +1,5 @@
 import streamlit as st
-from stock_app_final import app
+from app import app
 
 st.set_page_config(
     page_title="Stock News Summary | AI Agent",
@@ -118,5 +118,6 @@ if start_summary:
 
 # if st.button("Run Summary"):
 #     asyncio.run(run_summary())
+
 
 
