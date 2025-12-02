@@ -26,7 +26,6 @@ HEADERS = {
     "Referer": "https://www.google.com/",
 }
 
-# === Step 1: Find Article Links ===
 def get_article_links(section_url):
     """Extract article links from a section's first page."""
     print(f"\n[INFO] Scanning: {section_url}")
@@ -38,18 +37,18 @@ def get_article_links(section_url):
         links = set()
         for a in soup.find_all("a", href=True):
             href = urljoin(BASE_URL, a["href"])
-            # Match only proper article URLs
+            
             if "/news/business/" in href and href.endswith(".html"):
                 links.add(href)
 
         print(f"[INFO] Found {len(links)} article links in {section_url}")
-        return list(links)[:10]  # Limit to first 10 per section
+        return list(links)[:10]  
     except Exception as e:
         print(f"[ERROR] Could not get links from {section_url}: {e}")
         return []
 
 
-# === Step 2: Scrape Article Details ===
+
 def scrape_article(link, section_name):
     """Extract title, date, and main text from one article."""
     try:
@@ -84,7 +83,7 @@ def scrape_article(link, section_name):
         return None
 
 
-# === Step 3: Main Orchestration ===
+
 def main():
     all_articles = []
 
@@ -98,7 +97,7 @@ def main():
                 all_articles.append(article_data)
             time.sleep(random.uniform(2.0, 4.0))
 
-    # === Step 4: Save to CSV ===
+
     csv_file = "moneycontrol_articles.csv"
     with open(csv_file, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(
@@ -113,3 +112,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
