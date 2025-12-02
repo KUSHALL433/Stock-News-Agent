@@ -109,7 +109,7 @@ def ai_summary(state:AgentState):
 
 
     Articles:
-    {combined_text[:10000]}
+    {combined_text}
     """
 
     result = llm.invoke([HumanMessage(content=prompt)])
@@ -275,5 +275,6 @@ app=graph.compile()
 # graph.add_edge("ai_summary",END)
 
 # app=graph.compile()
+
 
 
