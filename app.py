@@ -97,7 +97,7 @@ def ai_summary(state:AgentState):
     for section in ["business_articles", "economy_articles", "ipo_articles", 
                 "company_articles", "startup_articles", "stocks_articles"]:
         for article in state.get(section, []):
-            combined_text += f"\n\n[{article['section'].upper()}] {article['title']}\n{article['content'][:800]}"
+            combined_text += f"\n\n[{article['section'].upper()}] {article['title']}\n{article['content'][:500]}"
 
     prompt = f"""
     You are a financial AI assistant.
